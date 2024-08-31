@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Data Analysis Project - Hareesh Mynapalli</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+   <style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+        color: #f9f9f9;
+        background-color: #121212;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+    }
+    
+    header {
+        background-color: #1f1f1f;
+        color: #f9f9f9;
+        padding: 20px 0;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+    
+    .header-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    h1 {
+        font-size: 36px;
+        margin: 0;
+    }
+    
+    nav {
+        background-color: #333;
+        padding: 10px 0;
+        box-shadow: 0 4px 2px -2px black;
+    }
+    
+    .nav-links {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .nav-link {
+        color: #f9f9f9;
+        text-decoration: none;
+        padding: 10px 20px;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+    
+    .nav-link:hover {
+        background-color: #1f1f1f;
+        transform: scale(1.1);
+    }
+    
+    .section {
+        padding: 80px 0;
+        background: #1f1f1f;
+        border-radius: 8px;
+        margin-top: 20px;
+        animation: slide-up 1s ease-out;
+        scroll-margin-top: 100px;
+    }
+    
+    .container {
+        color: #f9f9f9;
+        width: 80%;
+        margin: auto;
+        overflow: hidden;
+    }
+    
+    h2 {
+        text-align: center;
+        font-size: 28px;
+        margin-bottom: 20px;
+        color: #f9f9f9;
+        position: relative;
+    }
+    
+    h2::after {
+        content: '';
+        width: 80px;
+        height: 4px;
+        background-color: #e8491d;
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    /* Skills and Certificates Sections */
+    .skills-grid, .certificate-grid {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 60px;
+    }
+    
+    .skill-card, .certificate-card {
+        background-color: #2a2a2a;
+        color: #f9f9f9;
+        padding: 40px 20px 20px;
+        margin: 10px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        text-align: center;
+        transition: transform 0.3s, box-shadow 0.3s;
+        position: relative;
+        width: 250px;
+    }
+    
+    .skill-card:hover, .certificate-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+    
+    .skill-logo, .certificate-logo {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #1f1f1f;
+        border-radius: 50%;
+        padding: 5px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        object-fit: contain;
+    }
+    
+    .skill-card p, .certificate-card p {
+        margin: 20px 0 0;
+    }
+    
+    /* Heading Styling */
+    section h2 {
+        margin: 40px 0 20px;
+        text-align: center;
+        font-size: 1.8em;
+        color: #f9f9f9;
+    }
+    
+    /* Project Section */
+    .project-card {
+        background-color: #2a2a2a;
+        color: #f9f9f9;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+    
+    .project-link {
+        color: #e8491d;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s;
+    }
+    
+    .project-link:hover {
+        color: #f9f9f9;
+    }
+    
+    /* Footer */
+    footer {
+        background-color: #1f1f1f;
+        color: #f9f9f9;
+        text-align: center;
+        padding: 30px 0;
+        margin-top: 20px;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    footer p {
+        margin: 5px 0;
+        font-size: 18px;
+    }
+    
+    footer a {
+        color: #e8491d;
+        text-decoration: none;
+        transition: color 0.3s, transform 0.3s;
+        font-weight: bold;
+    }
+    
+    footer a:hover {
+        color: #f9f9f9;
+        transform: scale(1.1);
+    }
+    
+    /* Animated Contact Info */
+    .contact-info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        animation: fadeInUp 2s ease-out;
+        position: relative;
+    }
+    
+    .contact-info span {
+        display: inline-block;
+        margin: 0 15px;
+        font-size: 16px;
+        transition: color 0.3s, transform 0.3s;
+    }
+    
+    .contact-info span:hover {
+        color: #e8491d;
+        transform: translateY(-5px);
+    }
+    
+    /* Add visual effects */
+    .contact-info::before {
+        content: "";
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.6);
+        border-radius: 50%;
+        z-index: -1;
+        animation: pulse 4s infinite;
+    }
+    
+    @keyframes pulse {
+        0% {
+            transform: translate(-50%, -50%) scale(0.6);
+            opacity: 0.5;
+        }
+        50% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.2;
+        }
+        100% {
+            transform: translate(-50%, -50%) scale(0.6);
+            opacity: 0.5;
+        }
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* Scroll Arrows */
+    .scroll-arrow {
+        position: fixed;
+        right: 20px;
+        background-color: #333;
+        color: white;
+        padding: 10px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        z-index: 1000;
+        font-size: 24px;
+        text-align: center;
+        line-height: 20px;
+    }
+    
+    .scroll-arrow:hover {
+        background-color: #555;
+    }
+    
+    .scroll-up {
+        bottom: 70px;
+    }
+    
+    .scroll-down {
+        bottom: 20px;
+    }
+    
+    /* Skill and Certificate Logos */
+    .skill-card img.skill-logo, .certificate-card img.certificate-logo {
+        margin-bottom: 10px;
+    }
+    
+    /* Project 1 Specific Styles */
+    .project-media img {
+        width: 100%;
+        max-width: 800px;
+        height: auto;
+        margin: 20px 0;
+    }
+    
+    .project-media video {
+        width: 100%;
+        max-width: 800px;
+        height: auto;
+        margin: 20px 0;
+    }
+    
+    .project-features {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0;
+    }
+    
+    .project-features li {
+        background: #2a2a2a;
+        border: 1px solid #333;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+    }
+    
+    .related-projects-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    
+    .related-project-card {
+        background-color: #2a2a2a;
+        color: #f9f9f9;
+        padding: 20px;
+        margin: 10px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        width: 45%;
+    }
+    
+    .related-project-card h3 {
+        margin: 0;
+        font-size: 1.2em;
+        color: #e8491d;
+    }
+    
+    .related-project-card p {
+        margin: 10px 0 0;
+        font-size: 0.9em;
+    }
+    
+        </style>
+    
+</head>
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <h1 class="animate-fade-in">Sales Data Analysis Project</h1>
+        </div>
+    </header>
+
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#certificates" class="nav-link">Certificates</a></li>
+            <li><a href="#achievements" class="nav-link">Achievements</a></li>
+            <li><a href="https://drive.google.com/file/d/1f3Xebct56KcKmK2BgK3BMXEKnacVfQ81/view?usp=sharing" class="nav-link" target="_blank">Resume</a></li>
+        </ul>
+    </nav>
+
+    <section class="section animate-slide-up">
+        <div class="container">
+            <h2>Project Overview</h2>
+            <p>This project involved conducting an in-depth analysis of sales data using Excel and Power BI. The analysis focused on identifying trends, detecting outliers, and uncovering opportunities for growth. The findings were presented through interactive dashboards to facilitate data-driven decision-making.</p>
+            
+            <h3>Project Features</h3>
+            <ul class="project-features">
+                <li>Comprehensive trend analysis and forecasting</li>
+                <li>Identification of outliers and performance patterns</li>
+                <li>Interactive dashboards with drill-down capabilities</li>
+                <li>Customizable filters for data segmentation</li>
+            </ul>
+
+            <div class="project-media">
+                <img src="sales_data_analysis.png" alt="Sales Data Analysis Preview" class="animate-fade-in">
+                <video controls class="animate-slide-in">
+                    <source src="sales_data_analysis_demo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <a href="path_to_sales_data_files.zip" download class="download-btn animate-pop">Download Project Files</a>
+        </div>
+    </section>
+
+    <section class="related-projects section animate-slide-up">
+        <div class="container">
+            <h2>Related Projects</h2>
+            <div class="related-projects-grid">
+                <div class="related-project-card">
+                    <h3><a href="project1.html" class="project-link">Financial Dashboard</a></h3>
+                    <p>Analysis of financial metrics...</p>
+                </div>
+                <div class="related-project-card">
+                    <h3><a href="project3.html" class="project-link">Customer Retention Analysis</a></h3>
+                    <p>Insights into customer retention...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <p>Contact: <a href="mailto:hareeshmynapallirps@gmail.com">hareeshmynapallirps@gmail.com</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/hareeshmynapalli/">Hareesh Mynapalli</a></p>
+            <p><a href="index.html" class="back-home">Back to Portfolio</a></p>
+        </div>
+    </footer>
+
+    <div class="scroll-arrow scroll-up" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    <div class="scroll-arrow scroll-down" onclick="scrollToBottom()">
+        <i class="fas fa-arrow-down"></i>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
