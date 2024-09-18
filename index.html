@@ -8,6 +8,37 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* CSS code for responsiveness */
+        .nav-links {
+          display: flex;
+          justify-content: center;
+          list-style: none;
+          padding: 0;
+        }
+  
+        .nav-links li {
+          margin: 0 15px;
+        }
+  
+        .nav-link {
+          text-decoration: none;
+          color: #ff;
+          font-weight: bold;
+        }
+  
+        /* Responsive styles for smaller screens */
+        @media (max-width: 768px) {
+          .nav-links {
+            flex-direction: column;
+            align-items: center;
+          }
+  
+          .nav-links li {
+            margin: 10px 0;
+          }
+        }
+      </style>
 </head>
 <body>
     <header class="header">
